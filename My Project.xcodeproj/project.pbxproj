@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133E622B246B0C5B00148588 /* GuestCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */; };
 		13791CC02466F82A0031C45E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CBF2466F82A0031C45E /* AppDelegate.swift */; };
 		13791CC22466F82A0031C45E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CC12466F82A0031C45E /* SceneDelegate.swift */; };
-		13791CC42466F82A0031C45E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CC32466F82A0031C45E /* ViewController.swift */; };
-		13791CC72466F82A0031C45E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13791CC52466F82A0031C45E /* Main.storyboard */; };
 		13791CC92466F82A0031C45E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13791CC82466F82A0031C45E /* Assets.xcassets */; };
 		13791CCC2466F82A0031C45E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */; };
+		13791CD42466F87F0031C45E /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD32466F87F0031C45E /* Guest.swift */; };
+		13791CD62466F8AC0031C45E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13791CD52466F8AC0031C45E /* Main.storyboard */; };
+		13791CD82466F8E60031C45E /* BrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD72466F8E60031C45E /* BrowserTableViewController.swift */; };
+		13791CDA2466F90C0031C45E /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD92466F90C0031C45E /* AddTableViewController.swift */; };
+		137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */; };
+		137B1A3D24683EF3006A3381 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */; };
+		13832505246D03E300B0A954 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832504246D03E300B0A954 /* EditTableViewController.swift */; };
+		13832508246D046400B0A954 /* EditRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCellTableViewCell.swift; sourceTree = "<group>"; };
 		13791CBC2466F82A0031C45E /* My Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13791CBF2466F82A0031C45E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13791CC12466F82A0031C45E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		13791CC32466F82A0031C45E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		13791CC62466F82A0031C45E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13791CC82466F82A0031C45E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13791CCB2466F82A0031C45E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13791CCD2466F82A0031C45E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13791CD32466F87F0031C45E /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
+		13791CD52466F8AC0031C45E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		13791CD72466F8E60031C45E /* BrowserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTableViewController.swift; sourceTree = "<group>"; };
+		13791CD92466F90C0031C45E /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
+		137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
+		137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		13832504246D03E300B0A954 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
+		13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,38 @@
 		13791CBE2466F82A0031C45E /* My Project */ = {
 			isa = PBXGroup;
 			children = (
+				13791CD32466F87F0031C45E /* Guest.swift */,
 				13791CBF2466F82A0031C45E /* AppDelegate.swift */,
 				13791CC12466F82A0031C45E /* SceneDelegate.swift */,
-				13791CC32466F82A0031C45E /* ViewController.swift */,
-				13791CC52466F82A0031C45E /* Main.storyboard */,
-				13791CC82466F82A0031C45E /* Assets.xcassets */,
+				13791CD72466F8E60031C45E /* BrowserTableViewController.swift */,
+				133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */,
+				137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */,
+				13832509246D046A00B0A954 /* Editing */,
+				13832506246D043200B0A954 /* Adding */,
+				13791CD52466F8AC0031C45E /* Main.storyboard */,
 				13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */,
+				13791CC82466F82A0031C45E /* Assets.xcassets */,
 				13791CCD2466F82A0031C45E /* Info.plist */,
 			);
 			path = "My Project";
+			sourceTree = "<group>";
+		};
+		13832506246D043200B0A954 /* Adding */ = {
+			isa = PBXGroup;
+			children = (
+				13791CD92466F90C0031C45E /* AddTableViewController.swift */,
+				137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */,
+			);
+			path = Adding;
+			sourceTree = "<group>";
+		};
+		13832509246D046A00B0A954 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				13832504246D03E300B0A954 /* EditTableViewController.swift */,
+				13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */,
+			);
+			path = Editing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13791CD02466F82A0031C45E /* Build configuration list for PBXNativeTarget "My Project" */;
 			buildPhases = (
+				297A13EFC00D422648392024 /* [CP] Check Pods Manifest.lock */,
 				13791CB82466F82A0031C45E /* Sources */,
 				13791CB92466F82A0031C45E /* Frameworks */,
 				13791CBA2466F82A0031C45E /* Resources */,
@@ -125,36 +163,60 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13791CD62466F8AC0031C45E /* Main.storyboard in Resources */,
 				13791CCC2466F82A0031C45E /* LaunchScreen.storyboard in Resources */,
 				13791CC92466F82A0031C45E /* Assets.xcassets in Resources */,
-				13791CC72466F82A0031C45E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		297A13EFC00D422648392024 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-My Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13791CB82466F82A0031C45E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13791CC42466F82A0031C45E /* ViewController.swift in Sources */,
+				137B1A3D24683EF3006A3381 /* DetailTableViewController.swift in Sources */,
+				13832505246D03E300B0A954 /* EditTableViewController.swift in Sources */,
+				13791CDA2466F90C0031C45E /* AddTableViewController.swift in Sources */,
+				13832508246D046400B0A954 /* EditRoomSelectionTableViewController.swift in Sources */,
+				133E622B246B0C5B00148588 /* GuestCellTableViewCell.swift in Sources */,
+				13791CD82466F8E60031C45E /* BrowserTableViewController.swift in Sources */,
 				13791CC02466F82A0031C45E /* AppDelegate.swift in Sources */,
+				137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */,
 				13791CC22466F82A0031C45E /* SceneDelegate.swift in Sources */,
+				13791CD42466F87F0031C45E /* Guest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		13791CC52466F82A0031C45E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13791CC62466F82A0031C45E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
