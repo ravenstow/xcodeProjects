@@ -220,7 +220,7 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
             guard let roomChoice = roomType else { return }
                 let firstName = firstNameTextField.text ?? ""
                 let lastName = lastNameTextField.text ?? ""
-                let idNumber = Int(idTextField.text ?? "")
+                let idNumber = idTextField.text ?? ""
                 let contactNumber = phoneTextField.text ?? ""
                 let email = emailTextField.text ?? ""
                 let creditCardNumber = creditCardTextField.text ?? ""

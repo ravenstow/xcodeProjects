@@ -11,7 +11,7 @@ import Foundation
 struct Guest: Codable, Equatable {
     var firstName: String
     var lastName: String
-    var idNumber: Int
+    var idNumber: String
     var contactNumber: String
     var email: String? = "N/A"
     var creditCardNumber: String
@@ -47,15 +47,15 @@ struct Guest: Codable, Equatable {
     }
     // Model Sample method
     static func loadSampleGuests() -> [Guest] {
-        let guest1 = Guest(firstName: "Nat", lastName: "King Cole", idNumber: 0, contactNumber: "000-000-000", email: nil, creditCardNumber: "0000-000-0000-000", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*3), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.standard, smokingNeeded: true, specialRequest: nil)
+        let guest1 = Guest(firstName: "Nat", lastName: "King Cole", idNumber: "", contactNumber: "000-000-000", email: nil, creditCardNumber: "0000-000-0000-000", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*3), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.standard, smokingNeeded: true, specialRequest: nil)
         
-        let guest2 = Guest(firstName: "Frank", lastName: "Sinatra", idNumber: 1, contactNumber: "000-000-001", email: "xxxxx@gmail.com", creditCardNumber: "0000-000-0000-001", checkInDate: Date(timeIntervalSinceNow: 60*60*24*2), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 2, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: true, specialRequest: "No Morning Call")
+        let guest2 = Guest(firstName: "Frank", lastName: "Sinatra", idNumber: "", contactNumber: "000-000-001", email: "xxxxx@gmail.com", creditCardNumber: "0000-000-0000-001", checkInDate: Date(timeIntervalSinceNow: 60*60*24*2), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 2, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: true, specialRequest: "No Morning Call")
         
-        let guest3 = Guest(firstName: "Bob", lastName: "Dylan", idNumber: 2, contactNumber: "000-000-002", email: "xxxxx@hotmail.com", creditCardNumber: "0000-000-0000-002", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*10), numberOfAdults: 2, numberOfChildren: 3, roomChoice: RoomType.family, smokingNeeded: true, specialRequest: "Side room only")
+        let guest3 = Guest(firstName: "Bob", lastName: "Dylan", idNumber: "", contactNumber: "000-000-002", email: "xxxxx@hotmail.com", creditCardNumber: "0000-000-0000-002", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*10), numberOfAdults: 2, numberOfChildren: 3, roomChoice: RoomType.family, smokingNeeded: true, specialRequest: "Side room only")
         
-        let guest4 = Guest(firstName: "Johnney", lastName: "Depp", idNumber: 3, contactNumber: "000-000-003", email: "xxxxx@yahoo.com", creditCardNumber: "0000-000-0000-003", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*6), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.presidentSuite, smokingNeeded: false, specialRequest: "")
+        let guest4 = Guest(firstName: "Johnney", lastName: "Depp", idNumber: "", contactNumber: "000-000-003", email: "xxxxx@yahoo.com", creditCardNumber: "0000-000-0000-003", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*6), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.presidentSuite, smokingNeeded: false, specialRequest: "")
         
-        let guest5 = Guest(firstName: "Eric", lastName: "Clapton", idNumber: 4, contactNumber: "000-000-004", email: "xxxxx@outlook.com", creditCardNumber: "0000-000-0000-004", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 7, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: false, specialRequest: nil)
+        let guest5 = Guest(firstName: "Eric", lastName: "Clapton", idNumber: "'4'", contactNumber: "000-000-004", email: "xxxxx@outlook.com", creditCardNumber: "0000-000-0000-004", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 7, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: false, specialRequest: nil)
         
         let guests = [guest1, guest2, guest3, guest4, guest5]
         return guests

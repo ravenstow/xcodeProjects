@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1306D23824780E4C00D43ECD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306D23724780E4C00D43ECD /* Utilities.swift */; };
 		133E622B246B0C5B00148588 /* GuestCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */; };
 		13791CC02466F82A0031C45E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CBF2466F82A0031C45E /* AppDelegate.swift */; };
 		13791CC22466F82A0031C45E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CC12466F82A0031C45E /* SceneDelegate.swift */; };
@@ -14,15 +15,18 @@
 		13791CCC2466F82A0031C45E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */; };
 		13791CD42466F87F0031C45E /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD32466F87F0031C45E /* Guest.swift */; };
 		13791CD62466F8AC0031C45E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13791CD52466F8AC0031C45E /* Main.storyboard */; };
-		13791CD82466F8E60031C45E /* BrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD72466F8E60031C45E /* BrowserTableViewController.swift */; };
+		13791CD82466F8E60031C45E /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD72466F8E60031C45E /* HomeTableViewController.swift */; };
 		13791CDA2466F90C0031C45E /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD92466F90C0031C45E /* AddTableViewController.swift */; };
 		137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */; };
 		137B1A3D24683EF3006A3381 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */; };
+		1382E4B524780847000C94A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1382E4B424780847000C94A6 /* GoogleService-Info.plist */; };
 		13832505246D03E300B0A954 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832504246D03E300B0A954 /* EditTableViewController.swift */; };
 		13832508246D046400B0A954 /* EditRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */; };
+		183C0AB71CB992803F6EFE6E /* Pods_My_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7267A1C41B94345D8AC0F /* Pods_My_Project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1306D23724780E4C00D43ECD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCellTableViewCell.swift; sourceTree = "<group>"; };
 		13791CBC2466F82A0031C45E /* My Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13791CBF2466F82A0031C45E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,12 +36,16 @@
 		13791CCD2466F82A0031C45E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13791CD32466F87F0031C45E /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		13791CD52466F8AC0031C45E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		13791CD72466F8E60031C45E /* BrowserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTableViewController.swift; sourceTree = "<group>"; };
+		13791CD72466F8E60031C45E /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		13791CD92466F90C0031C45E /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
 		137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		1382E4B424780847000C94A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13832504246D03E300B0A954 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
+		75F87B699A22717180D02975 /* Pods-My Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Project.debug.xcconfig"; path = "Target Support Files/Pods-My Project/Pods-My Project.debug.xcconfig"; sourceTree = "<group>"; };
+		B4F7267A1C41B94345D8AC0F /* Pods_My_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C5C33DA08CAB896AFD414C /* Pods-My Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Project.release.xcconfig"; path = "Target Support Files/Pods-My Project/Pods-My Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +53,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183C0AB71CB992803F6EFE6E /* Pods_My_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1306D23624780E3800D43ECD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13791CD32466F87F0031C45E /* Guest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1306D23924780E5600D43ECD /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				1306D23724780E4C00D43ECD /* Utilities.swift */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		1306D23A24780E9000D43ECD /* Main Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13791CD72466F8E60031C45E /* HomeTableViewController.swift */,
+				133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */,
+				137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */,
+			);
+			path = "Main Controllers";
+			sourceTree = "<group>";
+		};
 		13791CB32466F82A0031C45E = {
 			isa = PBXGroup;
 			children = (
 				13791CBE2466F82A0031C45E /* My Project */,
 				13791CBD2466F82A0031C45E /* Products */,
+				29502C8E8EC0BE9353718C8A /* Pods */,
+				7D85679D8EABD26E02A07174 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,18 +107,18 @@
 		13791CBE2466F82A0031C45E /* My Project */ = {
 			isa = PBXGroup;
 			children = (
-				13791CD32466F87F0031C45E /* Guest.swift */,
 				13791CBF2466F82A0031C45E /* AppDelegate.swift */,
 				13791CC12466F82A0031C45E /* SceneDelegate.swift */,
-				13791CD72466F8E60031C45E /* BrowserTableViewController.swift */,
-				133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */,
-				137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */,
+				1306D23624780E3800D43ECD /* Model */,
+				1306D23924780E5600D43ECD /* Tools */,
+				1306D23A24780E9000D43ECD /* Main Controllers */,
 				13832509246D046A00B0A954 /* Editing */,
 				13832506246D043200B0A954 /* Adding */,
 				13791CD52466F8AC0031C45E /* Main.storyboard */,
 				13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */,
 				13791CC82466F82A0031C45E /* Assets.xcassets */,
 				13791CCD2466F82A0031C45E /* Info.plist */,
+				1382E4B424780847000C94A6 /* GoogleService-Info.plist */,
 			);
 			path = "My Project";
 			sourceTree = "<group>";
@@ -104,6 +141,23 @@
 			path = Editing;
 			sourceTree = "<group>";
 		};
+		29502C8E8EC0BE9353718C8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75F87B699A22717180D02975 /* Pods-My Project.debug.xcconfig */,
+				B9C5C33DA08CAB896AFD414C /* Pods-My Project.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7D85679D8EABD26E02A07174 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4F7267A1C41B94345D8AC0F /* Pods_My_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,6 +169,7 @@
 				13791CB82466F82A0031C45E /* Sources */,
 				13791CB92466F82A0031C45E /* Frameworks */,
 				13791CBA2466F82A0031C45E /* Resources */,
+				5FEC0D7CE2F2B0B62A358154 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13791CD62466F8AC0031C45E /* Main.storyboard in Resources */,
+				1382E4B524780847000C94A6 /* GoogleService-Info.plist in Resources */,
 				13791CCC2466F82A0031C45E /* LaunchScreen.storyboard in Resources */,
 				13791CC92466F82A0031C45E /* Assets.xcassets in Resources */,
 			);
@@ -194,6 +250,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5FEC0D7CE2F2B0B62A358154 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-My Project/Pods-My Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-My Project/Pods-My Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-My Project/Pods-My Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -203,10 +276,11 @@
 			files = (
 				137B1A3D24683EF3006A3381 /* DetailTableViewController.swift in Sources */,
 				13832505246D03E300B0A954 /* EditTableViewController.swift in Sources */,
+				1306D23824780E4C00D43ECD /* Utilities.swift in Sources */,
 				13791CDA2466F90C0031C45E /* AddTableViewController.swift in Sources */,
 				13832508246D046400B0A954 /* EditRoomSelectionTableViewController.swift in Sources */,
 				133E622B246B0C5B00148588 /* GuestCellTableViewCell.swift in Sources */,
-				13791CD82466F8E60031C45E /* BrowserTableViewController.swift in Sources */,
+				13791CD82466F8E60031C45E /* HomeTableViewController.swift in Sources */,
 				13791CC02466F82A0031C45E /* AppDelegate.swift in Sources */,
 				137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */,
 				13791CC22466F82A0031C45E /* SceneDelegate.swift in Sources */,
@@ -344,6 +418,7 @@
 		};
 		13791CD12466F82A0031C45E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75F87B699A22717180D02975 /* Pods-My Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +437,7 @@
 		};
 		13791CD22466F82A0031C45E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C5C33DA08CAB896AFD414C /* Pods-My Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
