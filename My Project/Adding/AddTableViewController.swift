@@ -10,37 +10,6 @@ import UIKit
 
 class AddTableViewController: UITableViewController, AddRoomSelectionTableViewControllerDelegate {
     
-    func didSelect(roomType: RoomType) {
-        self.roomType = roomType
-        updateRoomType()
-        updateSaveButtonState()
-    }
-    
-    // 基本資料 properties
-    @IBOutlet var firstNameTextField: UITextField!
-    @IBOutlet var lastNameTextField: UITextField!
-    @IBOutlet var idTextField: UITextField!
-    @IBOutlet var phoneNumberTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var creditCardTextField: UITextField!
-    // 入住期間 properties
-    @IBOutlet var checkInDateLabel: UILabel!
-    @IBOutlet var checkInDatePicker: UIDatePicker!
-    @IBOutlet var checkOutDateLabel: UILabel!
-    @IBOutlet var checkOutDatePicker: UIDatePicker!
-    
-    // 入住條件 properties
-    @IBOutlet var numberOfAdultLabel: UILabel!
-    @IBOutlet var numberOfAdultStepper: UIStepper!
-    @IBOutlet var numberOfChildrenLabel: UILabel!
-    @IBOutlet var numberOfChildrenStepper: UIStepper!
-    @IBOutlet var roomTypeLabel: UILabel!
-    // 特殊需求 properties
-    @IBOutlet var smokingSwitcher: UISwitch!
-    @IBOutlet var remarkTextView: UITextView!
-    
-    @IBOutlet var saveButton: UIBarButtonItem!
-
     var roomType: RoomType?
     var addingGuest: Guest?
     
@@ -48,19 +17,39 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
     var checkInDatePickerIndexPath = IndexPath(row: 1, section: 1)
     var checkOutDateLabelIndexPath = IndexPath(row: 2, section: 1)
     var checkOutDatePickerIndexPath = IndexPath(row: 3, section: 1)
-    
     var checkInDatePickerIsHidden = true
     var checkOutDatePickerIsHidden = true
+    // MARK: -
+    @IBOutlet var firstNameTextField: UITextField!
+    @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var idTextField: UITextField!
+    @IBOutlet var phoneNumberTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var creditCardTextField: UITextField!
     
+    @IBOutlet var checkInDateLabel: UILabel!
+    @IBOutlet var checkInDatePicker: UIDatePicker!
+    @IBOutlet var checkOutDateLabel: UILabel!
+    @IBOutlet var checkOutDatePicker: UIDatePicker!
+    
+    @IBOutlet var numberOfAdultLabel: UILabel!
+    @IBOutlet var numberOfAdultStepper: UIStepper!
+    @IBOutlet var numberOfChildrenLabel: UILabel!
+    @IBOutlet var numberOfChildrenStepper: UIStepper!
+    @IBOutlet var roomTypeLabel: UILabel!
+
+    @IBOutlet var smokingSwitcher: UISwitch!
+    @IBOutlet var remarkTextView: UITextView!
+    @IBOutlet var saveButton: UIBarButtonItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Checking whether a model object has been passed from other tableview
+   
         updateUI()
-        updateGuestNumbers()
         updateSaveButtonState()
         updateRoomType()
     }
-
+    // MARK: - Date Pickers Configurations
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case checkInDatePickerIndexPath:
@@ -114,67 +103,19 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
             break
         }
     }
-        
-    func updateUI() {
-        if let guest = addingGuest {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            
-            navigationItem.title = guest.firstName + " " + guest.lastName
-            firstNameTextField.text = guest.firstName
-            lastNameTextField.text = guest.lastName
-            idTextField.text = guest.idNumber
-            phoneNumberTextField.text = guest.contactNumber
-            emailTextField.text = guest.email
-            creditCardTextField.text = guest.creditCardNumber
-            checkInDateLabel.text = dateFormatter.string(from: guest.checkInDate)
-            checkOutDateLabel.text = dateFormatter.string(from: guest.checkOutDate)
-            numberOfAdultLabel.text = String(guest.numberOfAdults)
-            numberOfChildrenLabel.text = String(guest.numberOfChildren)
-            roomTypeLabel.text  = guest.roomChoice.title
-            remarkTextView.text = guest.specialRequest
-        } else {
-        
-            updateDateViews()
-        }
-    }
-    
-    func updateRoomType() {
-        if let roomType = roomType {
-            roomTypeLabel.text = roomType.title
-        } else {
-            roomTypeLabel.text = "Not Set"
-        }
-    }
-    
-    func updateSaveButtonState () {
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let id = idTextField.text ?? ""
-        let phone = phoneNumberTextField.text ?? ""
-        let creditCard = creditCardTextField.text ?? ""
-        let adults = Int(numberOfAdultStepper.value)
-        let roomType = roomTypeLabel.text
-
-        saveButton.isEnabled = !firstName.isEmpty && !lastName.isEmpty && !id.isEmpty && !phone.isEmpty && !creditCard.isEmpty && adults > 0 && roomType != "Not Set"
-    }
-    
-    func updateDateViews () {
+    // MARK: - 
+    private func updateUI() {
+        // Initialize the Date Labels based on Date Pickers
+        let midnightToday = Calendar.current.startOfDay(for: Date())
+        checkInDatePicker.minimumDate = midnightToday
         checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        
+        let dateFormatter = DateFormatter(); dateFormatter.dateStyle = .medium
         checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
         checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
     }
     
-    func updateGuestNumbers () {
-        numberOfAdultLabel.text = "\(Int(numberOfAdultStepper.value))"
-        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
-    }
-    
-    func updateRoomTypeLabel () {
+    private func updateRoomType() {
         if let roomType = roomType {
             roomTypeLabel.text = roomType.title
         } else {
@@ -182,20 +123,42 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
         }
     }
     
+    private func updateSaveButtonState () {
+        // Make sure Save Button only enabled when fields were filled-in
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || creditCardTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || Int(numberOfAdultStepper.value) == 0
+            || roomTypeLabel.text == "Not Set" {
+            saveButton.isEnabled = false
+        }
+    }
+    
+    //MARK: - Protocol Method
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+        updateSaveButtonState()
+    }
+    //MARK: -
     @IBAction func textEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        updateDateViews()
+        updateUI()
     }
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        updateGuestNumbers()
+        numberOfAdultLabel.text = "\(Int(numberOfAdultStepper.value))"
+        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
         updateSaveButtonState()
     }
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectRoomType" {
         let destinationViewController = segue.destination as? AddRoomSelectionTableViewController

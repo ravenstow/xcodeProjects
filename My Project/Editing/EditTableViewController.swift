@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol EditTableViewControllerDelegate: class {
-    func saveChangeSegue (by guest: Guest)
-    func confirmedDeleteAt ()
-}
-
 class EditTableViewController: UITableViewController, EditRoomSelectionTableViewControllerDelegate {
- 
-    func didSelect(roomType: RoomType) {
-        self.roomType = roomType
-        updateRoomType()
-    }
+
+    var roomType: RoomType?
+    var editingGuest: Guest!
     
+    var checkInDateLabelIndexPath = IndexPath(row: 0, section: 1)
+    var checkInDatePickerIndexPath = IndexPath(row: 1, section: 1)
+    var checkOutDateLabelIndexPath = IndexPath(row: 2, section: 1)
+    var checkOutDatePickerIndexPath = IndexPath(row: 3, section: 1)
+    var checkInDatePickerIsHidden = true
+    var checkOutDatePickerIsHidden = true
+    // MARK: -
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
@@ -43,26 +43,16 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
-    var roomType: RoomType?
-    var editingGuest: Guest!
-    
-    weak var delegate: EditTableViewControllerDelegate?
-    
-    var checkInDateLabelIndexPath = IndexPath(row: 0, section: 1)
-    var checkInDatePickerIndexPath = IndexPath(row: 1, section: 1)
-    var checkOutDateLabelIndexPath = IndexPath(row: 2, section: 1)
-    var checkOutDatePickerIndexPath = IndexPath(row: 3, section: 1)
-    
-    var checkInDatePickerIsHidden = true
-    var checkOutDatePickerIsHidden = true
-    
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let midnightToday = Calendar.current.startOfDay(for: Date())
+        checkInDatePicker.minimumDate = midnightToday
+        checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
         updateUI()
-        setupDatesValue()
     }
-
+    // MARK: - Date Pickers Configurations
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case checkInDatePickerIndexPath:
@@ -116,14 +106,12 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
             break
         }
     }
-
-    // MARK: - Instance Methods 
-    
-    // Assign data from 'editingGuest' to proper UI objects
-    func updateUI() {
+    // MARK: -
+    private func updateUI() {
+        let dateFormatter = DateFormatter(); dateFormatter.dateStyle = .medium
+        
         guard let guest = editingGuest else { return }
-            let dateFormatter = DateFormatter(); dateFormatter.dateStyle = .medium
-                    
+            
         firstNameTextField.text = guest.firstName
         lastNameTextField.text = guest.lastName
         idTextField.text = String(guest.idNumber)
@@ -137,51 +125,39 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
         roomTypeLabel.text  = guest.roomChoice.title
         remarkTextView.text = guest.specialRequest
     }
-    
-    func updateRoomType() {
-        guard let roomType = roomType else { return }
-            roomTypeLabel.text = roomType.title
-    }
-    
-    func updateSaveButtonState () {
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let id = idTextField.text ?? ""
-        let phone = phoneTextField.text ?? ""
-        let creditCard = creditCardTextField.text ?? ""
 
-        saveButton.isEnabled = !firstName.isEmpty && !lastName.isEmpty && !id.isEmpty && !phone.isEmpty && !creditCard.isEmpty
-    }
-    
-    func setupDatesValue() {
-        let midnightToday = Calendar.current.startOfDay(for: Date())
-        checkInDatePicker.minimumDate = midnightToday
-        checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
+    private func updateSaveButtonState () {
+        // Make sure Save Button is only enabled when fields were filled-in
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || creditCardTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            || Int(adultStepper.value) == 0 {
+            saveButton.isEnabled = false
         }
-        
-    func updateDateValue() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        
-        checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
-        checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
     }
     
-    func updateGuestNumbers () {
-        adultLabel.text = "\(Int(adultStepper.value))"
-        childrenLabel.text = "\(Int(childrenStepper.value))"
+    // MARK: - Protocol methods
+    
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        roomTypeLabel.text = roomType.title
     }
+    
+    // MARK: -
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
     @IBAction func datePickersValueChanged(_ sender: UIDatePicker) {
-        setupDatesValue()
-        updateDateValue()
+        let dateFormatter = DateFormatter(); dateFormatter.dateStyle = .medium
+        checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
+        checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
     }
     @IBAction func steppersValueChanged(_ sender: UIStepper) {
-        updateGuestNumbers()
-        saveButton.isEnabled = Int(adultStepper.value) > 0
+        adultLabel.text = "\(Int(adultStepper.value))"
+        childrenLabel.text = "\(Int(childrenStepper.value))"
     }
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: "確定刪除此訂房內容？", preferredStyle: .alert)
@@ -189,7 +165,6 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Delete", style: .default, handler: { ation in
             self.performSegue(withIdentifier: "deleteUnwind", sender: self)
-            self.delegate?.confirmedDeleteAt()
         })
         
 
@@ -214,8 +189,10 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
         destinationViewController?.delegate = self
         destinationViewController?.roomType = roomType
             
-            super.prepare(for: segue, sender: sender)
+            
+            // Wrapping changed Data to be taken back to DetailTableViewController
         } else if segue.identifier == "saveChangeToDetail" {
+            super.prepare(for: segue, sender: sender)
             
             guard let roomChoice = roomType else { return }
                 let firstName = firstNameTextField.text ?? ""
@@ -233,7 +210,6 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
             
                 editingGuest = Guest(firstName: firstName, lastName: lastName, idNumber: idNumber, contactNumber: contactNumber, email: email, creditCardNumber: creditCardNumber, checkInDate: checkInDate, checkOutDate: checkOutDate, numberOfAdults: numberOfAdults, numberOfChildren: numberOfChildren, roomChoice: roomChoice, smokingNeeded: smokingNeeded, specialRequest: specialRequest)
             
-            delegate?.saveChangeSegue(by: editingGuest)
         }
     
     }

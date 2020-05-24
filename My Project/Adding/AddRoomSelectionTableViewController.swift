@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 protocol AddRoomSelectionTableViewControllerDelegate: class {
     func didSelect(roomType: RoomType)
 }
@@ -19,8 +20,8 @@ class AddRoomSelectionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    // MARK: - Table view data source
+    
+    // MARK: - Table view DATA SOURCE
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -30,7 +31,6 @@ class AddRoomSelectionTableViewController: UITableViewController {
         return RoomType.all.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomTypeCell", for: indexPath)
         let roomType = RoomType.all[indexPath.row]
@@ -53,5 +53,4 @@ class AddRoomSelectionTableViewController: UITableViewController {
         delegate?.didSelect(roomType: roomType!)
         tableView.reloadData()
     }
-
 }

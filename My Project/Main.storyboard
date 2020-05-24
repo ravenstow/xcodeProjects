@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0dM-bH-ffF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K1F-K6-Nxt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -416,7 +417,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88r-rb-9rx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="-611"/>
+            <point key="canvasLocation" x="2871.0144927536235" y="-611.38392857142856"/>
         </scene>
         <!--訂房資訊-->
         <scene sceneID="2e0-dM-izM">
@@ -954,6 +955,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVL-a9-rSs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-758" y="816"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="H5M-u0-1Ru">
+            <objects>
+                <viewController id="K7j-FK-NMQ" customClass="LoginViewController" customModule="My_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRg-jb-6K7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1xU-U0-jgW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d4r-8W-mze"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x97-Gn-Pbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147.82608695652175" y="-672.32142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Uw1-7Y-UIw">
@@ -1518,6 +1535,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWY-mF-FJV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2899" y="64"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oub-1E-uuX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K1F-K6-Nxt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cc1-8F-m2f">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K7j-FK-NMQ" kind="relationship" relationship="rootViewController" id="Mii-cD-uFY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LRU-76-oqz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762.31884057971024" y="-672.32142857142856"/>
         </scene>
     </scenes>
     <resources>

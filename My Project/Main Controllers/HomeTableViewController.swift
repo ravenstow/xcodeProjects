@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import FirebaseFirestore
 
 class HomeTableViewController: UITableViewController {
 
     var guests: [Guest] = []
-    
+    var documentID = [Guest.documentID]
     
     override func viewDidLoad() {
         super.viewDidLoad()

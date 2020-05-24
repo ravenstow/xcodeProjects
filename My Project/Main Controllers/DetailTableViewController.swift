@@ -10,6 +10,9 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
 
+    var guestDetail: Guest!
+    var roomType: RoomType?
+    
     @IBOutlet var guestLastNameLabel: UILabel!
     @IBOutlet var guestFirstNameLabel: UILabel!
     @IBOutlet var guestEmailLabel: UILabel!
@@ -28,30 +31,21 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet var guestSmokingSwitcher: UISwitch!
     @IBOutlet var guestSpecialRequestTextView: UITextView!
     
-    // MARK: - Data Models
-    var guestDetail: Guest!
-    var roomType: RoomType?
-     
-    // MARK: - View Delegate
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
         
-        updateGuestDetail()
+        updateUI()
     }
 
     
-    func updateGuestDetail() {
+    func updateUI() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
         guestLastNameLabel.text = guestDetail.lastName
         guestFirstNameLabel.text = guestDetail.firstName
-        if let email = guestDetail.email {
-            guestEmailLabel.text = email
-        } else {
-            guestEmailLabel.text = ""
-        }
+        guestEmailLabel.text = guestDetail.email ?? ""
         guestNumberLabel.text = guestDetail.contactNumber
         guestIDNumberLabel.text = String(guestDetail.idNumber)
         guestCreditCardNumberLabel.text = guestDetail.creditCardNumber
@@ -86,7 +80,7 @@ class DetailTableViewController: UITableViewController {
             guestDetail = sourceController.editingGuest
             roomType = sourceController.roomType
             
-            updateGuestDetail()
+            updateUI()
         }
     }
     
