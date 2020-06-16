@@ -7,107 +7,61 @@
 //
 
 import Foundation
-import UIKit
 import FirebaseFirestore
-import FirebaseAuth
+import FirebaseFirestoreSwift
 
 class Utilities {
     
-    let guestSample1 = Guest(documentID: nil, firstName: "Nat", lastName: "King Cole", idNumber: "", contactNumber: "000-000-000", email: nil, creditCardNumber: "0000-000-0000-000", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*3), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.standard, smokingNeeded: true, specialRequest: nil)
-    
-    let guestSample2 = Guest(documentID: nil, firstName: "Frank", lastName: "Sinatra", idNumber: "", contactNumber: "000-000-001", email: "xxxxx@gmail.com", creditCardNumber: "0000-000-0000-001", checkInDate: Date(timeIntervalSinceNow: 60*60*24*2), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 2, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: true, specialRequest: "No Morning Call")
-    
-    let guestSample3 = Guest(documentID: nil, firstName: "Bob", lastName: "Dylan", idNumber: "", contactNumber: "000-000-002", email: "xxxxx@hotmail.com", creditCardNumber: "0000-000-0000-002", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*10), numberOfAdults: 2, numberOfChildren: 3, roomChoice: RoomType.family, smokingNeeded: true, specialRequest: "Side room only")
-    
-    let guestSample4 = Guest(documentID: nil, firstName: "Johnney", lastName: "Depp", idNumber: "", contactNumber: "000-000-003", email: "xxxxx@yahoo.com", creditCardNumber: "0000-000-0000-003", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*6), numberOfAdults: 1, numberOfChildren: 0, roomChoice: RoomType.presidentSuite, smokingNeeded: false, specialRequest: "")
-    
-    let guestSample5 = Guest(documentID: nil, firstName: "Eric", lastName: "Clapton", idNumber: "'4'", contactNumber: "000-000-004", email: "xxxxx@outlook.com", creditCardNumber: "0000-000-0000-004", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 7, numberOfChildren: 0, roomChoice: RoomType.double, smokingNeeded: false, specialRequest: nil)
-    
+    static let dateFormatter = DateFormatter()
     static let db = Firestore.firestore()
-    static let newDocument = db.collection("guests").document()
-    
-    // MARK: - 'CRUD' (CREATE, READ, UPDATE, DELETE) methods to Firestore
-    
-    static func addingGuest(with data: Guest) {
+    static let guestReference = db.collection("guests")
 
-        // Creating Document to Firestore
-        newDocument.setData(
-            ["documentID": newDocument.documentID,
-            "firstName": data.firstName,
-            "lastName": data.lastName,
-            "idNumber": data.idNumber,
-            "phone": data.contactNumber,
-            "email": data.email as Any,
-            "creditCard": data.creditCardNumber,
-            "checkIn": data.checkInDate,
-            "checkOut": data.checkOutDate,
-            "adults": data.numberOfAdults,
-            "children": data.numberOfChildren,
-            "roomType": data.roomChoice.title,
-            "smoking": data.smokingNeeded,
-            "special": data.specialRequest as Any])
+    // MARK: - FIRESTORE COMMUNICATION
+   
+    // Creating Document to Firestore -- COMPLETE
+    static func addingGuestToFirebase(with data: Guest) {
+        
+        let creatingPathOfGuest = guestReference.document("\(data.firstName.prefix(1))" + "\(data.lastName)")
+        
+        // Saving root documents
+        creatingPathOfGuest.setData(
+            ["documentID": "\(data.firstName.prefix(1))" + "\(data.lastName)",
+             "firstName": data.firstName,
+             "lastName": data.lastName,
+             "phone": data.contactNumber,
+             "idNumber": data.idNumber,
+             "email": data.email as Any,
+             "creditCard": data.creditCardNumber as Any,
+             "checkIn": Timestamp(date: data.checkInDate as Date),
+             "checkOut": Timestamp(date: data.checkOutDate as Date),
+             "roomChoice": RoomType.roomEncoder(rooms: data.roomChoice),
+             "adults": data.numberOfAdults as Any,
+             "children": data.numberOfChildren as Any,
+             "smoking": data.smokingNeeded,
+             "special": data.specialRequest as Any
+        ])
     }
     
-    static func updatingGuest(with data: Guest) {
+    // Deleting document
+    static func deletingGuestInFirebase(data: Guest) {
         
-        // Overwritting Document to Firestore
-        db.collection("guests").document(data.documentID!).setData(
-            ["documentID": newDocument.documentID,
-            "firstName": data.firstName,
-            "lastName": data.lastName,
-            "idNumber": data.idNumber,
-            "phone": data.contactNumber,
-            "email": data.email as Any,
-            "creditCard": data.creditCardNumber,
-            "checkIn": data.checkInDate,
-            "checkOut": data.checkOutDate,
-            "adults": data.numberOfAdults,
-            "children": data.numberOfChildren,
-            "roomType": data.roomChoice.title,
-            "smoking": data.smokingNeeded,
-            "special": data.specialRequest as Any], merge: true)
-    }
-    
-    static func loadingGuest() -> [Guest] {
-        var guests: [Guest] = []
-        
-        // Reading all documents in guests collection
-        db.collection("guests").getDocuments { (snapshot, error) in
-            
-            // If documents exist in snapshot and there is No Error
-            if snapshot != nil && error == nil {
-                
-                // Go over the each document in snapshot
-                for document in snapshot!.documents {
-                    let documentData = document.data()
-                    
-                    let documentID = documentData["documentID"] ?? ""
-                    let firstName = documentData["firstName"]
-                    let lastName = documentData["lastName"]
-                    let idNumber = documentData["idNumber"]
-                    let contactNumber = documentData["phone"]
-                    let email = documentData["email"] ?? ""
-                    let creditCardNumber = documentData["creditCard"]
-                    let checkInDate = documentData["checkIn"]
-                    let checkOutDate = documentData["checkOut"]
-                    let numberOfAdults = documentData["adults"]
-                    let numberOfChildren = documentData["children"]
-                    let roomChoice = documentData["roomType"]
-                    let smokingNeeded = documentData["smoking"]
-                    let specialRequest = documentData["special"] ?? ""
-                    
-                    let guest = Guest(documentID: documentID as? String, firstName: firstName as! String, lastName: lastName as! String, idNumber: idNumber as! String, contactNumber: contactNumber as! String, email: email as? String, creditCardNumber: creditCardNumber as! String, checkInDate: checkInDate as! Date, checkOutDate: checkOutDate as! Date, numberOfAdults: numberOfAdults as! Int, numberOfChildren: numberOfChildren as! Int, roomChoice: roomChoice as! RoomType, smokingNeeded: smokingNeeded as! Bool, specialRequest: specialRequest as? String)
-                    
-                    guests.append(guest)
-                }
-            }
+        guestReference.document("\(data.firstName.prefix(1))" + "\(data.lastName)").delete { (error) in
+            guard let error = error else { print ("Successfully deleted!")
+                return }
+            print ("Failed to delete data: \(data.firstName.prefix(1)) \(data.lastName), Error Message \(error).")
         }
-        return guests
     }
     
-    static func deletingGuest(data: Guest) {
-        
-        // Deleting document
-        db.collection("guests").document(data.documentID!).delete()
-    }
+    
+
+    // Temporary Sample Instance storage
+    static let guestSample1 = Guest(documentID: "", firstName: "Nat", lastName: "King Cole", idNumber: 00, contactNumber: "0900-000-000", email: "nkingcole@hotmail.com", creditCardNumber: "0000-000-0000-000", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*3), numberOfAdults: 1, numberOfChildren: 0, roomChoice: [RoomType.standard, RoomType.standard], smokingNeeded: true, specialRequest: "")
+    
+    static let guestSample2 = Guest(documentID: "", firstName: "Frank", lastName: "Sinatra", idNumber: 01, contactNumber: "0900-000-001", email: "fsinatra@gmail.com", creditCardNumber: "0000-000-0000-001", checkInDate: Date(timeIntervalSinceNow: 60*60*24*2), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 2, numberOfChildren: 0, roomChoice: [RoomType.double], smokingNeeded: true, specialRequest: "No Morning Call")
+    
+    static let guestSample3 = Guest(documentID: "", firstName: "Bob", lastName: "Dylan", idNumber: 02, contactNumber: "0900-000-002", email: "bdylan@hotmail.com", creditCardNumber: "0000-000-0000-002", checkInDate: Date(timeIntervalSinceNow: 60*60*24*1), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*10), numberOfAdults: 2, numberOfChildren: 3, roomChoice: [RoomType.standard, RoomType.double, RoomType.family], smokingNeeded: true, specialRequest: "Side room only")
+    
+    static let guestSample4 = Guest(documentID: "", firstName: "Johnney", lastName: "Depp", idNumber: 03, contactNumber: "0900-000-003", email: "jdepp@yahoo.com", creditCardNumber: "0000-000-0000-003", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*6), numberOfAdults: 1, numberOfChildren: 0, roomChoice: [RoomType.presidentSuite, RoomType.double], smokingNeeded: false, specialRequest: "")
+    
+    static let guestSample5 = Guest(documentID: "", firstName: "Eric", lastName: "Clapton", idNumber: 04, contactNumber: "0900-000-004", email: "eclapton@outlook.com", creditCardNumber: "0000-000-0000-004", checkInDate: Date(timeIntervalSinceNow: 60*60*24*3), checkOutDate: Date(timeIntervalSinceNow: 60*60*24*5), numberOfAdults: 7, numberOfChildren: 0, roomChoice: [RoomType.double, RoomType.double, RoomType.double], smokingNeeded: false, specialRequest: "")
 }

@@ -7,49 +7,53 @@
 //
 
 import UIKit
+
 protocol EditRoomSelectionTableViewControllerDelegate: class {
-    func didSelect(roomType: RoomType)
+    func didSelect(roomType: [RoomType])
 }
 
 class EditRoomSelectionTableViewController: UITableViewController {
 
-    var roomType: RoomType?
+    var roomType: [RoomType]!
     weak var delegate: EditRoomSelectionTableViewControllerDelegate?
+    
+    @IBOutlet var standardCountLabel: UILabel!
+    @IBOutlet var standardStepper: UIStepper!
+    @IBOutlet var doubleCountLabel: UILabel!
+    @IBOutlet var doubleStepper: UIStepper!
+    @IBOutlet var familyCountLabel: UILabel!
+    @IBOutlet var familyStepper: UIStepper!
+    @IBOutlet var presidentCountLabel: UILabel!
+    @IBOutlet var presidentStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view DELEGATIONS
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RoomType.all.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
-        let roomType = RoomType.all[indexPath.row]
-
-        cell.textLabel?.text = roomType.title
-        cell.detailTextLabel?.text = "$ \(roomType.price)"
-        if roomType == self.roomType {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
-
-        return cell
-    }
+  
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        roomType = RoomType.all[indexPath.row]
-        delegate?.didSelect(roomType: roomType!)
+        roomType = RoomType.all
+        delegate?.didSelect(roomType: roomType)
+        
         tableView.reloadData()
     }
 
+    // MARK: -
+    @IBAction func standardStepperValueChanged(_ sender: UIStepper) {
+        standardCountLabel.text = String(standardStepper.value)
+    }
+    @IBAction func doubleStepperValueChanged(_ sender: UIStepper) {
+        doubleCountLabel.text = String(doubleStepper.value)
+    }
+    @IBAction func familyStepperValueChanged(_ sender: UIStepper) {
+        familyCountLabel.text = String(familyStepper.value)
+    }
+    @IBAction func presidentStepperValueChanged(_ sender: UIStepper) {
+        presidentCountLabel.text = String(presidentStepper.value)
+    }
+    
 }

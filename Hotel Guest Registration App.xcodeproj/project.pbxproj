@@ -19,10 +19,11 @@
 		13791CDA2466F90C0031C45E /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13791CD92466F90C0031C45E /* AddTableViewController.swift */; };
 		137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */; };
 		137B1A3D24683EF3006A3381 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */; };
+		137DADD424936F2A00CAB299 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137DADD324936F2A00CAB299 /* SignUpViewController.swift */; };
 		13832505246D03E300B0A954 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832504246D03E300B0A954 /* EditTableViewController.swift */; };
 		13832508246D046400B0A954 /* EditRoomSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */; };
+		13841328247AA86000AAD5B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13841327247AA86000AAD5B8 /* GoogleService-Info.plist */; };
 		138C7DA62478FD34009E218A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C7DA52478FD34009E218A /* LoginViewController.swift */; };
-		13E4A9612479049B00E18FC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13E4A9602479049B00E18FC5 /* GoogleService-Info.plist */; };
 		183C0AB71CB992803F6EFE6E /* Pods_My_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7267A1C41B94345D8AC0F /* Pods_My_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +42,11 @@
 		13791CD92466F90C0031C45E /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		137B1A3A2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
 		137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		137DADD324936F2A00CAB299 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		13832504246D03E300B0A954 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		13832507246D046400B0A954 /* EditRoomSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoomSelectionTableViewController.swift; sourceTree = "<group>"; };
+		13841327247AA86000AAD5B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		138C7DA52478FD34009E218A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		13E4A9602479049B00E18FC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75F87B699A22717180D02975 /* Pods-My Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Project.debug.xcconfig"; path = "Target Support Files/Pods-My Project/Pods-My Project.debug.xcconfig"; sourceTree = "<group>"; };
 		B4F7267A1C41B94345D8AC0F /* Pods_My_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C5C33DA08CAB896AFD414C /* Pods-My Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Project.release.xcconfig"; path = "Target Support Files/Pods-My Project/Pods-My Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,14 +80,14 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
-		1306D23A24780E9000D43ECD /* Main Controllers */ = {
+		1306D23A24780E9000D43ECD /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
 				13791CD72466F8E60031C45E /* HomeTableViewController.swift */,
 				133E622A246B0C5B00148588 /* GuestCellTableViewCell.swift */,
 				137B1A3C24683EF3006A3381 /* DetailTableViewController.swift */,
 			);
-			path = "Main Controllers";
+			path = HomeList;
 			sourceTree = "<group>";
 		};
 		13791CB32466F82A0031C45E = {
@@ -113,15 +115,12 @@
 				13791CC12466F82A0031C45E /* SceneDelegate.swift */,
 				1306D23624780E3800D43ECD /* Model */,
 				1306D23924780E5600D43ECD /* Tools */,
-				138C7DA72478FD3D009E218A /* LOGIN Controllers */,
-				1306D23A24780E9000D43ECD /* Main Controllers */,
-				13832509246D046A00B0A954 /* Editing */,
-				13832506246D043200B0A954 /* Adding */,
+				138629452492782700EFEA85 /* Controller */,
 				13791CD52466F8AC0031C45E /* Main.storyboard */,
 				13791CCA2466F82A0031C45E /* LaunchScreen.storyboard */,
 				13791CC82466F82A0031C45E /* Assets.xcassets */,
 				13791CCD2466F82A0031C45E /* Info.plist */,
-				13E4A9602479049B00E18FC5 /* GoogleService-Info.plist */,
+				13841327247AA86000AAD5B8 /* GoogleService-Info.plist */,
 			);
 			path = "My Project";
 			sourceTree = "<group>";
@@ -144,12 +143,24 @@
 			path = Editing;
 			sourceTree = "<group>";
 		};
-		138C7DA72478FD3D009E218A /* LOGIN Controllers */ = {
+		138629452492782700EFEA85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				138C7DA72478FD3D009E218A /* User Account  */,
+				1306D23A24780E9000D43ECD /* HomeList */,
+				13832509246D046A00B0A954 /* Editing */,
+				13832506246D043200B0A954 /* Adding */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		138C7DA72478FD3D009E218A /* User Account  */ = {
 			isa = PBXGroup;
 			children = (
 				138C7DA52478FD34009E218A /* LoginViewController.swift */,
+				137DADD324936F2A00CAB299 /* SignUpViewController.swift */,
 			);
-			name = "LOGIN Controllers";
+			name = "User Account ";
 			sourceTree = "<group>";
 		};
 		29502C8E8EC0BE9353718C8A /* Pods */ = {
@@ -206,7 +217,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 13791CB72466F82A0031C45E /* Build configuration list for PBXProject "My Project" */;
+			buildConfigurationList = 13791CB72466F82A0031C45E /* Build configuration list for PBXProject "Hotel Guest Registration App" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -230,7 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13791CD62466F8AC0031C45E /* Main.storyboard in Resources */,
-				13E4A9612479049B00E18FC5 /* GoogleService-Info.plist in Resources */,
+				13841328247AA86000AAD5B8 /* GoogleService-Info.plist in Resources */,
 				13791CCC2466F82A0031C45E /* LaunchScreen.storyboard in Resources */,
 				13791CC92466F82A0031C45E /* Assets.xcassets in Resources */,
 			);
@@ -296,6 +307,7 @@
 				13791CC02466F82A0031C45E /* AppDelegate.swift in Sources */,
 				137B1A3B2467E4E8006A3381 /* AddRoomSelectionTableViewController.swift in Sources */,
 				13791CC22466F82A0031C45E /* SceneDelegate.swift in Sources */,
+				137DADD424936F2A00CAB299 /* SignUpViewController.swift in Sources */,
 				13791CD42466F87F0031C45E /* Guest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +481,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13791CB72466F82A0031C45E /* Build configuration list for PBXProject "My Project" */ = {
+		13791CB72466F82A0031C45E /* Build configuration list for PBXProject "Hotel Guest Registration App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13791CCE2466F82A0031C45E /* Debug */,

@@ -9,8 +9,8 @@
 import UIKit
 
 class EditTableViewController: UITableViewController, EditRoomSelectionTableViewControllerDelegate {
-
-    var roomType: RoomType?
+    
+    var roomType: [RoomType]?
     var editingGuest: Guest!
     
     var checkInDateLabelIndexPath = IndexPath(row: 0, section: 1)
@@ -118,11 +118,12 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
         phoneTextField.text = guest.contactNumber
         emailTextField.text = guest.email
         creditCardTextField.text = guest.creditCardNumber
-        checkInDateLabel.text = dateFormatter.string(from: guest.checkInDate)
-        checkOutDateLabel.text = dateFormatter.string(from: guest.checkOutDate)
+        //checkInDateLabel.text = dateFormatter.string(from: guest.checkInDate!)
+        //checkOutDateLabel.text = dateFormatter.string(from: guest.checkOutDate!)
         adultLabel.text = String(guest.numberOfAdults)
         childrenLabel.text = String(guest.numberOfChildren)
-        roomTypeLabel.text  = guest.roomChoice.title
+        //
+        roomTypeLabel.text  = RoomType.standard.title
         remarkTextView.text = guest.specialRequest
     }
 
@@ -140,9 +141,10 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
     
     // MARK: - Protocol methods
     
-    func didSelect(roomType: RoomType) {
+    func didSelect(roomType: [RoomType]) {
         self.roomType = roomType
-        roomTypeLabel.text = roomType.title
+        //
+        roomTypeLabel.text = RoomType.standard.title
     }
     
     // MARK: -
@@ -189,7 +191,6 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
         destinationViewController?.delegate = self
         destinationViewController?.roomType = roomType
             
-            
             // Wrapping changed Data to be taken back to DetailTableViewController
         } else if segue.identifier == "saveChangeToDetail" {
             super.prepare(for: segue, sender: sender)
@@ -197,7 +198,7 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
             guard let roomChoice = roomType else { return }
                 let firstName = firstNameTextField.text ?? ""
                 let lastName = lastNameTextField.text ?? ""
-                let idNumber = idTextField.text ?? ""
+                let idNumber = Int(idTextField.text ?? "") ?? 0
                 let contactNumber = phoneTextField.text ?? ""
                 let email = emailTextField.text ?? ""
                 let creditCardNumber = creditCardTextField.text ?? ""
@@ -208,7 +209,7 @@ class EditTableViewController: UITableViewController, EditRoomSelectionTableView
                 let smokingNeeded = smokingSwitcher.isOn
                 let specialRequest = remarkTextView.text ?? ""
             
-                editingGuest = Guest(firstName: firstName, lastName: lastName, idNumber: idNumber, contactNumber: contactNumber, email: email, creditCardNumber: creditCardNumber, checkInDate: checkInDate, checkOutDate: checkOutDate, numberOfAdults: numberOfAdults, numberOfChildren: numberOfChildren, roomChoice: roomChoice, smokingNeeded: smokingNeeded, specialRequest: specialRequest)
+            editingGuest = Guest(documentID: "", firstName: firstName, lastName: lastName, idNumber: idNumber, contactNumber: contactNumber, email: email, creditCardNumber: creditCardNumber, checkInDate: checkInDate as Date, checkOutDate: checkOutDate as Date, numberOfAdults: numberOfAdults, numberOfChildren: numberOfChildren, roomChoice: roomChoice, smokingNeeded: smokingNeeded, specialRequest: specialRequest)
             
         }
     

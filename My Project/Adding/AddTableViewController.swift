@@ -10,7 +10,7 @@ import UIKit
 
 class AddTableViewController: UITableViewController, AddRoomSelectionTableViewControllerDelegate {
     
-    var roomType: RoomType?
+    var roomType: [RoomType]?
     var addingGuest: Guest?
     
     var checkInDateLabelIndexPath = IndexPath(row: 0, section: 1)
@@ -117,7 +117,7 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
     
     private func updateRoomType() {
         if let roomType = roomType {
-            roomTypeLabel.text = roomType.title
+            roomTypeLabel.text = RoomType.roomDescriptionConverter(roomTypes: roomType)
         } else {
             roomTypeLabel.text = "Not Set"
         }
@@ -137,8 +137,9 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
     }
     
     //MARK: - Protocol Method
-    func didSelect(roomType: RoomType) {
-        self.roomType = roomType
+    
+    func didSelect(roomType: [RoomType]) {
+         self.roomType = roomType
         updateRoomType()
         updateSaveButtonState()
     }
@@ -171,7 +172,7 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
             guard let roomChoice = roomType else { return }
             let firstName = firstNameTextField.text ?? ""
             let lastName = lastNameTextField.text ?? ""
-            let idNumber = idTextField.text ?? ""
+            let idNumber = Int(idTextField.text ?? "") ?? 0
             let contactNumber = phoneNumberTextField.text ?? ""
             let email = emailTextField.text ?? ""
             let creditCardNumber = creditCardTextField.text ?? ""
@@ -182,7 +183,7 @@ class AddTableViewController: UITableViewController, AddRoomSelectionTableViewCo
             let smokingNeeded = smokingSwitcher.isOn
             let specialRequest = remarkTextView.text ?? ""
         
-            addingGuest = Guest(firstName: firstName, lastName: lastName, idNumber: idNumber, contactNumber: contactNumber, email: email, creditCardNumber: creditCardNumber, checkInDate: checkInDate, checkOutDate: checkOutDate, numberOfAdults: numberOfAdults, numberOfChildren: numberOfChildren, roomChoice: roomChoice, smokingNeeded: smokingNeeded, specialRequest: specialRequest)
+            addingGuest = Guest(documentID: "", firstName: firstName, lastName: lastName, idNumber: idNumber, contactNumber: contactNumber, email: email, creditCardNumber: creditCardNumber, checkInDate: checkInDate as Date, checkOutDate: checkOutDate as Date, numberOfAdults: numberOfAdults, numberOfChildren: numberOfChildren, roomChoice: roomChoice, smokingNeeded: smokingNeeded, specialRequest: specialRequest)
         }
     }
 }

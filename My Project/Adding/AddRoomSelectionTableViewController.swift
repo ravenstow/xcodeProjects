@@ -9,12 +9,12 @@
 import UIKit
 
 protocol AddRoomSelectionTableViewControllerDelegate: class {
-    func didSelect(roomType: RoomType)
+    func didSelect(roomType: [RoomType])
 }
 
 class AddRoomSelectionTableViewController: UITableViewController {
 
-    var roomType: RoomType?
+    var roomType: [RoomType]?
     weak var delegate: AddRoomSelectionTableViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -37,19 +37,19 @@ class AddRoomSelectionTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel?.text = roomType.title
-        cell.detailTextLabel?.text = "$ \(roomType.price)"
-        if roomType == self.roomType {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+        cell.detailTextLabel?.text = "$ \(String(describing: roomType.price))"
+       // if roomType == self.roomType {
+          //  cell.accessoryType = .checkmark
+       // } else {
+        //    cell.accessoryType = .none
+       // }
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        roomType = RoomType.all[indexPath.row]
+        roomType = RoomType.all
         delegate?.didSelect(roomType: roomType!)
         tableView.reloadData()
     }
